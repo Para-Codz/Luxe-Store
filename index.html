@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUXE STORE</title>
+
+
+     <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitcount+Single+Ink:wght@100..900&family=Frijole&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Song+Myung&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    
+    
+    <!-- Section - 1 -->
+    <section>
+        <!-- Header -->
+         <header class="header" id="header">
+            <h1 class="header-logo">LUXE <span>.</span> STORE</h1>
+            <!-- Nav-bar -->
+             <nav class="header-nav">
+                <ul>
+                    <li><a id="header" href="#new">New Arrivals</a></li>
+                    <li><a id="header" href="./collection.html">Collections</a></li>
+                    <li><a id="header" href="#product">Accessories</a></li>
+                </ul>
+             </nav>
+             
+             <!-- HAMBURGER -->
+<button class="hamburger" id="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+
+             <div class="header-controls">
+                <a id="header" href="collection.html" class="search"><i class="ph ph-magnifying-glass"></i></a>
+                <a id="header" href="" class="cart"><i class="ph ph-shopping-cart"></i></a>
+
+                <button id="theme-toggle" class="theme-toggle">
+  <i class="ph ph-moon"></i>
+</button>
+
+                
+             </div>
+
+         </header>
+    </section>
+
+    <!-- section-2  -->
+    <!-- hero -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <h1>Elevate Your Lifestyle</h1>
+            <p>
+                Discover our curated collection of premium goods designed for the modern
+                connoisseur. Quality meets timeless aesthetic.
+            </p>
+
+            <a href="./collection.html" class="hero-btn">
+                Shop Collection <span><i class="ph ph-arrow-right"></i></span>
+            </a>
+        </div>
+  </section>
+
+  <!-- New arrivals -->
+
+  <section class="new" id="new">
+    <div class="new-als-heads">
+        <h2>New Arrivals</h2>
+        <p>Handpicked items just for you.</p>
+
+            <!-- FILTER BUTTONS -->
+<div class="filters">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="cloth">Clothing</button>
+  <button class="filter-btn" data-filter="home">Home</button>
+  <button class="filter-btn" data-filter="accessories">Accessories</button>
+  <button class="filter-btn" data-filter="electronics">Electronics</button>
+</div>
+
+    </div>
+
+<div class="products" id="product">
+  <!-- Card 1 -->
+  <div class="product-card" data-category="cloth">
+    <div class="product-image">
+      <img src="image/jean.png" alt="Vintage Wash Denim Jacket">
+      <div class="image-overlay">
+    <button class="add-to-cart">
+      <i class="ph ph-plus"></i> Add to Cart
+    </button>
+  </div>
+    </div>
+    <div class="product-info">
+      <span class="category">CLOTHING</span>
+      <h3>Vintage Wash Denim Trousers</h3>
+      <p>Crafted from 100% organic cotton, this denim jacket features a relaxed fit...</p>
+      <strong class="price">$120.00</strong>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="product-card" data-category="home">
+    <div class="product-image">
+      <img src="image/candle-set.png" alt="Aromatherapy Candle Set">
+
+      <div class="image-overlay">
+    <button class="add-to-cart">
+      <i class="ph ph-plus"></i> Add to Cart
+    </button>
+  </div>
+    </div>
+    <div class="product-info">
+      <span class="category">HOME</span>
+      <h3>Aromatherapy Candle Set</h3>
+      <p>Hand-poured soy wax candle with essential oils. Features notes of...</p>
+      <strong class="price">$45.00</strong>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="product-card" data-category="cloth">
+    <div class="product-image">
+      <img src="image/original t-shirt.png" alt="Merino Wool Crewneck">
+
+      <div class="image-overlay">
+    <button class="add-to-cart">
+      <i class="ph ph-plus"></i> Add to Cart
+    </button>
+  </div>
+    </div>
+    <div class="product-info">
+      <span class="category">CLOTHING</span>
+      <h3>Merino Wool Crewneck</h3>
+      <p>Soft merino wool sweater in a versatile charcoal grey. Breathable...</p>
+      <strong class="price">$110.00</strong>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="product-card" data-category="accessories">
+    <div class="product-image">
+      <img src="image/eyeglass.png" alt="Retro Tortoise Sunglasses">
+
+      <div class="image-overlay">
+    <button class="add-to-cart">
+      <i class="ph ph-plus"></i> Add to Cart
+    </button>
+  </div>
+    </div>
+    <div class="product-info">
+      <span class="category">ACCESSORIES</span>
+      <h3>Retro Tortoise Sunglasses</h3>
+      <p>UV400 protection sunglasses with acetate frames.Retro-inspired design...</p>
+      <strong class="price">$89.00</strong>
+    </div>
+  </div>
+
+
+  <!-- Card 5 -->
+  <div class="product-card"data-category="electronics">
+    <div class="product-image">
+      <img src="image/watch.png" alt="wrist watch">
+
+      <div class="image-overlay">
+    <button class="add-to-cart">
+      <i class="ph ph-plus"></i> Add to Cart
+    </button>
+  </div>
+    </div>
+    <div class="product-info">
+      <span class="category">Accessories</span>
+      <h3>Classic Chronograph Watch</h3>
+      <p>Minimalist analog watch with genuine leather strap and sapphire crystal....</p>
+      <strong class="price">$199.50</strong>
+    </div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="product-card" data-category="accessories">
+    <div class="product-image">
+      <img src="image/hand-bag.png" alt="crossy hand bag">
+
+      <div class="image-overlay">
+    <button class="add-to-cart">
+      <i class="ph ph-plus"></i> Add to Cart
+    </button>
+  </div>
+    </div>
+    <div class="product-info">
+      <span class="category">Accessories</span>
+      <h3>Leather Crossbody Bag</h3>
+      <p>Italian leather crossbody bag with gold-tone hardware. Compact yet...</p>
+      <strong class="price">$185.00</strong>
+    </div>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="product-card" data-category="home">
+    <div class="product-image">
+      <img src="image/vase.png" alt="Flower vase">
+
+      <div class="image-overlay">
+    <button class="add-to-cart">
+      <i class="ph ph-plus"></i> Add to Cart
+    </button>
+  </div>
+    </div>
+    <div class="product-info">
+      <span class="category">Home</span>
+      <h3>Modern ceramic planter with a matte finish. Perfect for indoor plants and..</h3>
+      <p>Soft merino wool sweater in a versatile charcoal grey.</p>
+      <strong class="price">$35.00</strong>
+    </div>
+  </div>
+
+  <!-- Card 8 -->
+  <div class="product-card" data-category="electronics">
+    <div class="product-image">
+      <img src="image/headset.png" alt="headset">
+
+      <div class="image-overlay">
+    <button class="add-to-cart">
+      <i class="ph ph-plus"></i> Add to Cart
+    </button>
+  </div>
+    </div>
+    <div class="product-info">
+      <span class="category">Electronics</span>
+      <h3>Premium Wireless Headphones</h3>
+      <p>Experience premium sound quality with active noise cancellation and 30...</p>
+      <strong class="price">$110.00</strong>
+    </div>
+  </div>
+
+  <!-- Card 9 -->
+
+  <div class="product-card" data-category="cloth">
+  <div class="product-image">
+    <img src="image/linen-shirt.png" alt="Premium Linen Shirt">
+    <div class="image-overlay">
+    <button class="add-to-cart">
+      <i class="ph ph-plus"></i> Add to Cart
+    </button>
+  </div>  
+</div>
+  <div class="product-info">
+    <span class="category">CLOTHING</span>
+    <h3>Premium Linen Shirt</h3>
+    <p>Breathable linen shirt designed for comfort and everyday elegance.</p>
+    <strong class="price">$75.00</strong>
+  </div>
+</div>
+
+<!-- Card 10 -->
+
+<div class="product-card" data-category="home">
+  <div class="product-image">
+    <img src="image/table-lamp.png" alt="Modern Table Lamp">
+    <div class="image-overlay">
+    <button class="add-to-cart">
+      <i class="ph ph-plus"></i> Add to Cart
+    </button>
+  </div>  
+</div>
+  <div class="product-info">
+    <span class="category">HOME</span>
+    <h3>Modern Table Lamp</h3>
+    <p>Soft ambient lighting with a minimalist design for modern interiors.</p>
+    <strong class="price">$60.00</strong>
+  </div>
+</div>
+<!-- Card 11 -->
+
+<div class="product-card" data-category="accessories">
+  <div class="product-image">
+    <img src="image/leather-palms.png" alt="slippers">
+    <div class="image-overlay">
+    <button class="add-to-cart">
+      <i class="ph ph-plus"></i> Add to Cart
+    </button>
+  </div>  
+</div>
+  <div class="product-info">
+    <span class="category">ACCESSORIES</span>
+    <h3>Classic Men's Palms</h3>
+    <p>Men's All-Season Casual Slip-On Slippers - ..</p>
+    <strong class="price">$49.00</strong>
+  </div>
+</div>
+
+<!-- Card 12 -->
+
+<div class="product-card" data-category="electronics">
+  <div class="product-image">
+    <img src="image/television.png" alt="Wrist Watch">
+    <div class="image-overlay">
+    <button class="add-to-cart">
+      <i class="ph ph-plus"></i> Add to Cart
+    </button>
+  </div>  
+</div>
+  <div class="product-info">
+    <span class="category">ELECTRONICS</span>
+    <h3> LG 43UK6300 43-inch 4K HDR Smart LED TV. </h3>
+    <p>Features ThinQ AI and webOS smart platform</p>
+    <strong class="price">$199.50</strong>
+  </div>
+</div>
+
+
+
+</div>
+
+    
+  </section>
+
+
+    <footer class="footer">
+        <div class="footer-container">
+        
+            <!-- Brand -->
+            <div class="footer-brand">
+                <h2 class="header-logo">LUXE<span>.</span>STORE</h2>
+                <p>
+                    We believe in quality, craftsmanship, and sustainable practices.
+                    Our products are designed to last a lifetime.
+                </p>
+            </div>
+
+            <!-- Help -->
+            <div class="footer-links">
+                <h3>Help</h3>
+                <ul>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Legal -->
+            <div class="footer-links">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </footer>
+
+
+
+</body>
+</html>

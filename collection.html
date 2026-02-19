@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collections</title>
+  <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+  <style>
+    body { font-family: "Inter", sans-serif; background: #f5f5f5; margin: 0; padding: 0; }
+    .collections { padding: 30px 40px; }
+    .collections-header { display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px; }
+    .filter-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+    .filter-btn { background: #e0e0e0; border: none; padding: 8px 16px; border-radius: 999px; cursor: pointer; font-weight: 500; transition: background 0.3s; }
+    .filter-btn.active, .filter-btn:hover { background: #4f46e5; color: #fff; }
+    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+    .product-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+    .product-image { position: relative; width: 100%; height: 300px; overflow: hidden; object-fit: contain; }
+    .product-image img { width: 100%; height: 130%; object-fit: cover; transition: transform 0.4s ease; }
+    .image-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
+    .add-to-cart { background: #fff; color: #111; border: none; padding: 12px 20px; border-radius: 999px; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 8px; cursor: pointer; transform: translateY(10px); transition: transform 0.3s ease; }
+    .product-card:hover .image-overlay { opacity: 1; }
+    .product-card:hover .add-to-cart { transform: translateY(0); }
+    .product-card:hover img { transform: scale(1.06); }
+    .product-info { padding: 16px; }
+    .category { font-size: 12px; font-weight: 600; color: #4f46e5; letter-spacing: 1px; }
+    .product-info h3 { margin: 6px 0; font-size: 18px; color: #111827; }
+    .product-info p { font-size: 14px; color: #6b7280; line-height: 1.5; }
+    .price { display: block; margin-top: 10px; font-size: 16px; color: #111827; }
+    @media(max-width:600px){ .collections {padding: 20px;} }
+    .back {
+      /* border: 1px solid black; */
+      display: inline-block;
+      font-size: 32px;
+      padding: 5px;
+      color: black;
+      text-decoration: none;
+      border-radius: 20px;
+      transition: all 0.3s;
+    }
+
+    .back:hover {
+      transform: translateY(-4px) translateX(-5px);
+    }
+    form {
+      width: 40%;
+      border: 2px solid rgb(82, 73, 235);
+      border-radius: 15px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background-color: #fff;
+    }
+
+
+    input {
+      border: none;
+      box-shadow: none;
+      outline: none;
+      border-radius: 15px;
+      width: 100%;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 8px 10px;
+    }
+
+    i {
+      padding-left: 10px;
+    }
+
+
+    
+
+/* footer */
+.footer {
+  padding: 80px 60px;
+  background-color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+}
+
+.header-logo {
+    font-size: 25px;
+    letter-spacing: -3px;
+}
+
+.header-logo span {
+    color: rgb(119, 0, 255);
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  max-width: 400px;
+}
+
+.footer-brand h2 {
+  font-size: 22px;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  color: #000;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #5f6b8a;
+}
+
+.footer-links h3 {
+  font-size: 14px;
+  margin-bottom: 14px;
+  color: #000;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+  color: #4f46e5;
+}
+
+
+
+@media (max-width: 900px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 60px 24px;
+  }
+
+  .footer-brand p {
+    font-size: 13px;
+  }
+}
+
+
+/* CONTROLS */
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    justify-content: flex-end;
+    position: relative;
+    top: 50px;
+    right: 20px;
+    padding-top: 0px;
+    padding-right: 20px;
+}
+
+.header-controls div {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  
+  
+}
+
+.header-controls div i:hover{
+  background-color: #6b7280;
+  color: #fff;
+}
+
+.header-controls div i:active{
+  background-color: #34373d;
+}
+
+
+
+.header-controls div i {
+    border: 2px solid #4f46e5;
+      border-radius: 25px;
+      padding: 10px 10px 10px 10px;
+      transition: 0.3s;
+}
+
+
+.cart {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    font-weight: 800;
+    color: #000000;
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="header-controls">
+    <div>
+      <button class="cart"><i class="ph ph-shopping-cart"></i></button>
+    </div>
+             </div>
+
+<section class="collections">
+  <a href="./index.html" class="back">
+    <i class="ph ph-arrow-left"></i>
+  </a>
+  
+  <div class="collections-header">
+
+    <form action="" style="display: flex; justify-content: center;">
+      <i class="ph ph-magnifying-glass"></i>
+      <input type="text" id="search-item" placeholder="search..." onkeyup="search()">
+    </form>
+
+    <h2>Collections</h2>
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="cloth">Clothing</button>
+      <button class="filter-btn" data-filter="home">Home</button>
+      <button class="filter-btn" data-filter="accessories">Accessories</button>
+      <button class="filter-btn" data-filter="electronics">Electronics</button>
+    </div>
+  </div>
+
+  <div class="products"></div>
+</section>
+
+</section>
+
+
+    <footer class="footer">
+        <div class="footer-container">
+        
+            <!-- Brand -->
+            <div class="footer-brand">
+                <h2 class="header-logo">LUXE<span>.</span>STORE</h2>
+                <p>
+                    We believe in quality, craftsmanship, and sustainable practices.
+                    Our products are designed to last a lifetime.
+                </p>
+            </div>
+
+            <!-- Help -->
+            <div class="footer-links">
+                <h3>Help</h3>
+                <ul>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Legal -->
+            <div class="footer-links">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </footer>
+
+<script>
+
+let currentFilter = 'all';
+
+// ----- FILTER BUTTONS -----
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+
+    currentFilter = btn.getAttribute('data-filter');
+    renderProducts(currentFilter);
+    search(); // 👈 re-run search after filtering
+  });
+});
+
+const productsContainer = document.querySelector('.products');
+
+// ===== PLACE TO EDIT ALL PRODUCTS =====
+const products = {
+  cloth: [
+    { name: "Black European Sleeves (Women)", description: "Women'S French-Style Round Neck Flowing Sleeve Self-Tie Waist Shiny Shirt, Versatile Top for Spring ...", price: 60, image: "https://img-1.kwcdn.com/thumbnail/s/1c1826340660b06dcef57f6d32dcd92a_1d8b754ef94e.jpg?imageView2/2/w/800/q/70/format/avif", category: "cloth"},
+    { name: "Black European Sleeves (Men)", description: "Men  Dress Shirt Long Sleeve...", price: 65, image: "https://m.media-amazon.com/images/I/51rz1xOMarL._AC_UY1000_.jpg", category: "cloth" },
+    { name: "Unisex Beach Short", description: "Men's Casual Shorts, Solid & Striped Pattern, Beach Shorts...", price: 70, image: "https://img.ltwebstatic.com/images3_spmp/2024/12/29/96/17354510776a72ed64fd68364ba53dc62194b29806_thumbnail_750x999.webp", category: "cloth" },
+    { name: "African head wraps", description: "African head wraps for Women, t...", price: 75, image: "https://i.pinimg.com/736x/07/8c/d7/078cd7d2a94e76ceb8b0915bc632a8be.jpg", category: "cloth" },
+    { name: "Merino Wool Crewneck", description: "Soft merino wool sweater in a versatile charcoal grey. Breathable...", price: 75, image: "image/original t-shirt.png", category: "cloth" },
+    { name: "Knitted hand bags", description: "Colorful Knitted Fashion Women Handmade Shoulder Bag...", price: 80, image: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQzcWlGAYNn7ag_emwXSruAG4bFyjHM-s8NuJu1XCZgTx4LAOPtSEp6nkWvq2cMWnSTon6gL5SZggL_1evnF6ChmGwmHpAhFYwhUxsq88sLL0K8Vzo&usqp=CAc", category: "cloth" },
+    { name: "Cool Denim Wash Jackets", description: "Men's Leather Biker Jacket with Quilted Ribbed Sleeves ...", price: 85, image: "https://barneysoriginals.com/wp-content/uploads/2019/01/WEASLEY-BLCK-0047h-scaled.jpg", category: "cloth" },
+    { name: "Men's Hoodie", description: "Men's Versatile Warm Thick Hooded Sweatshirt...", price: 90, image: "https://img.kwcdn.com/product/fancy/22757eac-58aa-488b-a8b6-d0237e77384e.jpg?imageView2/2/w/800/q/70/format/avif", category: "cloth" },
+    { name: "T-shirts", description: "Men's Casual Short Sleeve Collar Shorts Printed Fashion Suit", price: 95, image: "https://img.kwcdn.com/garner-api/transfer/2023-7-18/72409a33a2d2ed49e1b83b80a64e758d.jpg?imageView2/2/w/800/q/70/format/avif", category: "cloth" },
+    { name: "Singlets", description: "Berrykey 3-in-1 Premium Singlet Men's ..", price: 100, image: "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/66/1320652/1.jpg?5168", category: "cloth" },
+    { name: "Classic Men Suit", description: "Men's 3pcs Suit Set: Blazer + Vest + Trousers, Business Casual, Stylish and Elegant, Premium Quality for Weddings, Work, and Parties", price: 105, image: "https://img.kwcdn.com/product/fancy/c5a36745-146e-4e1e-8590-1f6d536e0068.jpg?imageView2/2/w/800/q/70/format/avif", category: "cloth" },
+    { name: "Classic Women Gown", description: "Classy Corporate Gown Styles - Elegant Ladies Work Dresses", price: 110, image: "https://s.alicdn.com/@sc04/kf/H7875c7557a1c4757a6e51ed67fed6aa4z/New-Fashion-Office-Lady-Dress-Elegant-Personality-Casual-Style-Solid-Color-Plus-Size-for-Summer-and-Autumn-Career-Dresses.jpg", category: "cloth" },
+    { name: "Ankara Female Trousers", description: "Ankara Styles 2022: Beautiful Trouser Outfit for Ladies. - Ladeey", price: 115, image: "https://i.pinimg.com/564x/fc/3b/f8/fc3bf87b787a9341fda9d6ef21bd6bd5.jpg", category: "cloth" },
+    { name: "Ankara Blouss", description: "Peplum Tops Ankara Shirt And Blouse Peplum Simple...", price: 120, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfwCZ1enVXBOzinpaUZAdnqi_C3ZspIg72jw&s", category: "cloth" },
+    { name: "Mens Jeans", description: "Men?s Stretch Skinny Ripped Jeans, Super Comfy Nigeria...", price: 125, image: "https://images-cdn.ubuy.co.in/64f9190df312a71b0d1c098e-men-s-stretch-skinny-ripped-jeans-super.jpg", category: "cloth" },
+    { name: "Vintage Wash Denim Trousers", description: "Crafted from 100% organic cotton, this denim jacket features a relaxed fit...", price: 120, image: "image/jean.png", category: "cloth" },
+    { name: "Hooded jacket", description: "Cross-Border Men's Fashion Solid Color Casual Jacket", price: 130, image: "https://img.kwcdn.com/product/fancy/488e7a72-64f2-432e-bd37-0c973e47ec83.jpg?imageView2/2/w/800/q/70/format/avif", category: "cloth" },
+  ],
+  home: [
+    { name: "Fancy Marble Living Room Table", description: "Nordic Fancy Marble Centre Table Living Room...", price: 40, image: "https://pictures-nigeria.jijistatic.net/149232084_NjIwLTYyMC03MmExMGY5MjQw.webp", category: "home" },
+    { name: "Vintage bulbs", description: "vintage-style LED decorative light bulbs with filament shaped into words", price: 45, image: "https://i.pinimg.com/736x/d1/48/8e/d1488e3bea2d03c47487bec8f37685c3.jpg", category: "home" },
+    { name: "Ceramic Flower Vase", description: "Ceramic Flower Vase | Love Birds Pattern | Mod Ceramics", price: 50, image: "https://storage.googleapis.com/regalflowers-cdn/products/imgCeramic%20Dice%20Vase-hs05eutvx4m3iwxic9rlaz.jpg", category: "home" },
+    { name: "Classic ceilings", description: "Generic NEW QUALITY CHANDLER CELLING LIGHT..", price: 55, image: "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/03/2331914/1.jpg?7653", category: "home" },
+    { name: "Dinning Table", description: "Generic Modern Dining Table", price: 60, image: "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/11/3446372/1.jpg?2921", category: "home" },
+    { name: "Wooden Cupboard", description: " Modern Wooden Cupboard...", price: 65, image: "https://i.pinimg.com/564x/72/95/7b/72957b007831bdff661001ff22066066.jpg", category: "home" },
+    { name: "Curtains", description: "Generic High Quality Plain Light- Gray Curtain", price: 70, image: "https://storyathome.com/cdn/shop/files/1_c49024d6-ff77-4356-b012-37c4b7ae435e.jpg?v=1743581755&width=1946", category: "home" },
+    { name: "Bed", description: "Luxury Foreign Bed", price: 75, image: "https://eloquentdisplays.com/wp-content/uploads/2024/08/1-8.jpg", category: "home" },
+    { name: "Throw Pillows", description: "Generic Decorative Soft Round Cushion Throw Pillow", price: 80, image: "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/44/5114973/1.jpg?0705", category: "home" },
+    { name: "Doors", description: "Black HDF Door Nigeria | Goltava Doors", price: 85, Quantity: 4, image: "https://cdn.shopify.com/s/files/1/0567/3873/files/unnamed_70d60706-a1fe-415a-bc1e-35cd100dc717_large.jpg?v=1598285727", category: "home" },
+    { name: "Chairs", description: "Parlour Chair in Surulere - Furniture,", price: 90, image: "https://pictures-nigeria.jijistatic.net/136246059_NjIwLTQ2NS1jZWM0ZGZlOTZl.webp", category: "home" },
+    { name: "Decorative Wall Mirrors", description: "Autdot Gold Mirrors for Wall Decor, Large Living Room Mirror with Beveled Glass, Modern Decorativ..", price: 95, image: "https://m.media-amazon.com/images/I/61tE0U6rFXL.jpg", category: "home" },
+    { name: "BATHROOM ACCESSORY SETS ", description: "Bathroom accessories set with..", price: 100, image: "https://img-va.myshopline.com/image/store/2001472438/1660810708761/1.jpeg?w=800&h=800", category: "home" },
+    { name: "Dish Rack", description: "Dish Racks | Sacvin", price: 105, image: "https://www.sacvin.com/Website%20Nav%20Thumbnail%20Images/dish-racks", category: "home" },
+    { name: "Glass Cups with Lids", description: "Glass Cups with Lids and Straws with Design Strawberry 4pcs,Clear Glass Cups 16oz-DWTS", price: 110, image: "https://m.media-amazon.com/images/I/81M5DOZ3fyL.jpg", category: "home" },
+  ],
+  accessories: [
+    { name: "Pearl Crystal Earings", description: "Peach Crystal and Pearl Kundan Dangler Earrings for Women", price: 50, image: "https://karatcart.com/cdn/shop/products/IMG_01411500x2000.jpg?v=1653734313", category: "accessories" },
+    { name: "Black School Bags", description: "On Sale Black Child School Bag", price: 55, image: "https://s.alicdn.com/@sc04/kf/H93c63b682c6e42eeb5be324b5e9b04b11/High-Quality-Children-Black-School-Bags-for-Boys-Casual-Sports-Backpack-for-Elementary-Middle-High-School-Students-Kids-Bookbags.jpg_300x300.jpg", category: "accessories"  },
+    { name: "Women's  Leather Bag", description: "Fashion 3Set Women's Single-shoulder Crossbody with Purse & Handbag - Brown", price: 60, image: "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/57/5148814/1.jpg?6536", category: "accessories"  },
+    { name: "ROLEX GOLD WATCH", description: "Yellow Gold Rolex Watches: The Best New and Vintage Models", price: 65, image: "https://www.luxurybazaar.com/grey-market/wp-content/uploads/2024/11/Best-Yellow-Gold-Rolex-Watches-1024x731.jpg", category: "accessories"  },
+    { name: "ICE CUBAN CHAIN", description: "10mm18,20,24 Ice Bling Miami Cuban Chain Pendant Necklace", price: 70, image: "https://i5.walmartimages.com/seo/Iced-Hip-Hop-Dipset-Pendant-10mm-18-20-24-Ice-Bling-Miami-Cuban-Chain-Fashion-Necklace-18-Silver_8465a1d1-72c8-4892-8727-98a43ce9aaf4.ec23e263c6f05f270c032b020eb15384.jpeg", category: "accessories"  },
+    { name: "GOLD CHAIN", description: "TUOKAY 18K Big Faux Gold Flat Chain 11mm thickness 24in Length 90s Fashion Man Hip Hop", price: 75, image: "https://m.media-amazon.com/images/I/61c1gNV8qVL._AC_UY1000_.jpg", category: "accessories"  },
+    { name: "GUCCI BLACK CAPS", description: "Leather baseball hat with Double G in black | GUCCI® ZA", price: 80, image: "https://media.gucci.com/style/DarkGray_Center_0_0_490x490/1751648437/832252_4HBGA_1000_001_100_0000_Light-leather-baseball-hat-with-double-g.jpg", category: "accessories"  },
+    { name: "Gold bracelet", description: "Gold Bracelets for Women 18k Gold Plated Bracelet", price: 85, image: "https://m.media-amazon.com/images/I/51HPlgBPQBL._AC_SL1000__.jpg", category: "accessories"  },
+    { name: "Beaded Bangles", description: "Handmade Multicolor Beaded Stretch Bracelets Set", price: 90, image: "https://images-cdn.ubuy.co.in/6620b6e1bd4fb115c61a3d74-20pcs-6mm-beaded-stretch-bracelet-for.jpg", category: "accessories"  },
+    { name: "Leather Crossbody Bag", description: "", price: 95, image: "image/hand-bag.png", category: "accessories"  },
+    { name: "Retro Tortoise Sunglasses", description: "UV400 protection sunglasses with acetate frames.Retro-inspired design...", price: 100, image: "image/eyeglass.png", category: "accessories"  },
+    { name: "Classic Chronograph Watch", description: "Minimalist analog watch with genuine leather strap and sapphire crystal....", price: 105, image: "image/watch.png", category: "accessories"  },
+    { name: "Black Belts", description: "Black Belts for Men...", price: 110, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzYOf3DOYc_o5TiiAMDDN9_mbouElXFhq-Nw&s", category: "accessories"  },
+    { name: "Hand Bags", description: "Dreubea Womens Handbag Tote Shoulder Purse", price: 115, image: "https://m.media-amazon.com/images/I/71zvuBYlosL._AC_SL1000_.jpg", category: "accessories"  },
+    { name: "Purse", description: "Personalized Leather Envelope Purse Handbag", price: 120, image: "https://www.holtzleather.com/cdn/shop/files/the-cecilia-20-fine-leather-envelope-purse-with-adjustable-3-in-1-strap-1556148_1200x.jpg?v=1762811995" , category: "accessories" },
+    { name: "mEN BLACK SHOES", description: "2022 New Black Platform High Tide Leather Shoes for Men Business Dress Men's Shoes", price: 125, image: "https://image.made-in-china.com/202f0j00WJVhCbwsMgkU/2022-New-Black-Platform-High-Tide-Leather-Shoes-for-Men-Business-Dress-Men-s-Shoes.webp", category: "accessories"  },
+    { name: "Classic Men's Palms", description: "Men's All-Season Casual Slip-On Slippers - ..", price: 130, image: "image/leather-palms.png", category: "accessories"  },
+  ],
+  electronics: [
+    { name: "Solar standing fan", description: "Solar Standing Fan, AC/DC Rechargeable - Power Solution Mall", price: 150, image: "https://powersolutionmall.com/wp-content/uploads/2022/06/Rechargeable-USB-Indoor-Dcac-16-Inch-Solar-Powered-Fans-for-Home-Solar-Stand-Fan.webp", category: "electronics"},
+    { name: "Washing machine", description: "Samsung 8kg Front Load Automatic Washing Machine Wash& Spin", price: 155, image: "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/37/5754632/1.jpg?6723", category: "electronics" },
+    { name: "Hair driers", description: "Hector Professional 2500 Watt Tornado Hair Dryer for Personal or Salon  3", price: 160, image: "https://thehectorworld.com/cdn/shop/products/HT-TORNADEO2500wwbg2.jpg?v=1698055178", category: "electronics" },
+    { name: "Electric cooker", description: "Generic Electric Cooker Hot Plate-Double Face |", price: 165, image: "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/05/5159362/1.jpg?4351", category: "electronics" },
+    { name: "Ring light", description: "Generic 12inch Dimmable RGB LED Selfie Ring Light With Tripod Stand", price: 170, image: "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/75/950188/1.jpg?0636", category: "electronics" },
+    { name: "Blender", description: "Sulver Crest Heavy Duty Commercial Blender - 8,500watts in Surulere - Restaurant & Catering", price: 175, image: "https://pictures-nigeria.jijistatic.net/44327550_sinbo-silvercrest-blender-1800w-professional-heavy-duty_620x827.webp", category: "electronics" },
+    { name: "Apple Phone Watch", description: "Apple Watch Ultra 2 Titanium Case with Ocean Band", price: 180, image: "https://www.istore.com.ng/cdn/shop/files/Apple_Watch_Ultra_2_LTE_49mm_Titanium_Orange_Ocean_Band_PDP_Image_Position-1__WWEN_1200x.jpg?v=1696633051", category: "electronics" },
+    { name: "Ear pods", description: "TiLECC TWS Wilreless Bluetooth Earbuds Waterproof HiFi Headphones", price: 185, image: "https://ng.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/44/2170193/2.jpg?6671", category: "electronics" },
+    { name: "Headset", description: "Wireless Headphones Amazon Bluetooth Headset With Microphone Wireless Headset Headphones", price: 195, image: "https://ng.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/38/0196852/1.jpg?6473", category: "electronics" },
+    { name: "ELectric Kettle", description: "Generic Electric Kettle, Water Boiler & Heater 2L |", price: 200, image: "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/56/0346404/1.jpg?3974", category: "electronics" },
+    { name: "Air conditioner", description: "LG SPLIT INVERTER AC 2HP GENCOOL WITH COPPER CONDENSER", price: 205, image: "https://electromart.com.ng/wp-content/uploads/2023/10/lg_01_1-1.jpg", category: "electronics" },
+    { name: "Disco Lights", description: "Playbees Rotating Disco Ball - LED Revolving Disco Ball with Movable Strobe Lights for Disco Party", price: 210, image: "https://i5.walmartimages.com/seo/Playbees-Rotating-Disco-Ball-LED-Revolving-Disco-Ball-Movable-Strobe-Lights-Disco-Party-Decor-Mirror-Lights-Party-Mini-Lava-Lamp-Alternative-30-Secon_f5cde164-5739-4c0b-9b2c-4ceb033221d3.870b515f35f6d554c837945f20647be5.jpeg", category: "electronics" },
+    { name: "Drone", description: "AUOSHI Drone with Dual 4K HD Cameras, Brushless Motors, Altitude Hold, Waypoints Fly, 30-min Flight", price: 215, image: "https://i5.walmartimages.com/seo/Drone-with-4K-Camera-for-Adults-AUOSHI-RC-Quadcopter-with-High-Speed-Brushless-Motor-Altitude-Hold-Waypoint-Fly-2-Batteries-Carrying-Case_dbe64a9d-7cae-4afe-829b-25a2b7066b11.bde902db16655424f503c35c1b64308a.png?odnHeight=768&odnWidth=768&odnBg=FFFFFF", category: "electronics" },
+    { name: "Mixing Machine", description: "Portable Handheld Mixer Electric, Lightweight High Power Egg Beater Stainless Steel Beaters and Doug", price: 220, image: "https://images-na.ssl-images-amazon.com/images/I/41xAvHcCrFL._SL500_._AC_SL500_.jpg", category: "electronics" },
+    { name: "POrtable Electric Fans", description: "Led Digital Display Fan", price: 220, image: "https://ng.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/54/7303704/1.jpg?9207", category: "electronics" },
+  ]
+};
+
+// ===== RENDERING PRODUCTS =====
+function renderProducts(filter='all'){
+  productsContainer.innerHTML = '';
+  const allProducts = Object.values(products).flat();
+  const filtered = filter==='all'? allProducts : allProducts.filter(p=>p.category===filter);
+  filtered.forEach(p=>{
+    const card = document.createElement('div');
+    card.classList.add('product-card');
+    card.innerHTML = `
+      <div class="product-image">
+        <img src="${p.image}" alt="${p.name}">
+        <div class="image-overlay">
+          <button class="add-to-cart"><i class="ph ph-plus"></i>Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <span class="category">${p.category ? p.category.toUpperCase() : ''}</span>
+        <h3>${p.name.toUpperCase()}</h3>
+        <p>${p.description}</p>
+        <strong class="price">$${p.price}</strong>
+      </div>
+    `;
+    productsContainer.appendChild(card);
+  });
+}
+
+// ----- INITIAL RENDER -----
+renderProducts();
+
+
+function search() {
+  const searchbox = document.getElementById("search-item").value.toUpperCase();
+  const products = document.querySelectorAll(".product-card");
+
+  products.forEach(product => {
+    const pname = product.getElementsByTagName("h3")[0];
+    const category = product.querySelector(".category").textContent.toLowerCase();
+
+    if (pname) {
+      const textvalue = pname.textContent || pname.innerHTML;
+
+      if (
+        textvalue.toUpperCase().indexOf(searchbox) > -1 &&
+        (currentFilter === 'all' || category === currentFilter)
+      ) {
+        product.style.display = "";
+      } else {
+        product.style.display = "none";
+      }
+    }
+  });
+}
+
+
+
+</script>
+
+</body>
+</html>
